@@ -8,7 +8,7 @@ class MatrixGraph {
 public:
 	int num_nodes;
 	std::vector<Node> nodes;
-	int ** matrix;
+	std::vector<std::vector<int>> matrix;
 		// Each element will be 0 (non-adjacent) or > 0 (adjacent)
 		// Matrix will be formatted like matrix[a][b], where
 		// a = the id of the initial node and
@@ -17,5 +17,6 @@ public:
 	~MatrixGraph();
 private:
 	void sortNodes();
+	void quickSort(int left, int right);
 	void setAdjacents();
 };
