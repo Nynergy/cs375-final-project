@@ -1,0 +1,53 @@
+#include "Galaxy.h"
+#include "Planet.h"
+#include <stdlib.h>
+#include <string.h>
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <vector>
+#include <queue>
+#include <math.h>
+
+using namespace std;
+
+vector<Planet *> Galaxy::shortestPath(Planet * start, Planet * dest) {
+	for(int i = 0; i < this->numPlanets; i++) {
+		planets.at(i)->color = "white";
+		planets.at(i)->dist = numeric_limits<unsigned int>::max(). ;
+		planets.at(i)->opt_prev = nullptr;
+	}
+	start->color = "gray";
+	start->dist = 0;
+	for(int i = 0; i < this->numPlanets; i++) {
+    Planet * min = minVertex(start);
+		min.color == "red";
+		if(min->dist == INFINITY) return;
+		list<Planet *> adjs = min.getAdjacent();
+		for(int k = 0; i < adjs.size(); i++){
+			Planet * w = adjs[j].at(j);
+			if(w->dist > (min->dist + weight(min, w))){
+				w->dist = min->dist + weight(min, w);
+				w->opt_prev = v;
+			}
+		}
+	}
+}
+Planet * Galaxy::minVertex(Planet * p){
+    vector<Planet *> adjs = p.getAdjacent();
+    Planet * min = nullptr;
+    for(int i = 0; i < adjs.size(); i++){
+      if(adjs.at(i)->color == "white"){
+        min = adjs.at(i);
+        for(int k = 0; k < adjs.size(); k++){
+          if(adjs.at(k)->color == "white" && min > adjs.at(k)){
+            min = adjs.at(k);
+          }
+        }
+      }
+    }
+    return min;
+}
+Planet * Galaxy::weight(Planet * p1, Planet * p2){
+	return p1->dist - p2->dist;
+}
