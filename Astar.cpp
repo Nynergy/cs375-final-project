@@ -1,12 +1,11 @@
 #include "Astar.h"
-
 #include <unordered_map>
 #include <math.h>
 #include "PriorityQueue.h"
 
 //To be used with a matrix
 
-auto Astar::aStar_matrix(Node start, Node dest, MatrixGraph MG){
+double Astar::aStar_matrix(Node start, Node dest, MatrixGraph MG){
 	
 	//<id1, id2>>
 	std::unordered_map<int, int> came_from;
@@ -48,7 +47,7 @@ auto Astar::aStar_matrix(Node start, Node dest, MatrixGraph MG){
 }
 
 //List Astar
-auto Astar::aStar_list(Node start, Node dest){
+double Astar::aStar_list(Node start, Node dest){
 	return 0;
 }
 
