@@ -1,11 +1,12 @@
 #include "MatrixGraph.h"
+#include <iostream>
 
 int main() {
-	Node one, two, three;
-	one.id = 0;
-	two.id = 1;
-	three.id = 2;
-	std::pair<Node, int> edge_1;
+	Node one(1,1);
+       	Node two(2,2);
+	Node three(3,3);
+	printf(one.id);
+/*	std::pair<Node, int> edge_1;
 	std::pair<Node, int> edge_2;
 	std::pair<Node, int> edge_3;
 	edge_1.first = two;
@@ -28,5 +29,5 @@ int main() {
 	nodes.push_back(two);
 	nodes.push_back(three);
 	MatrixGraph mat_graph(nodes);
-	return 0;
+*/	return 0;
 }

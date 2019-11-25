@@ -3,7 +3,7 @@ CFLAGS= -std=c++14 -g
 
 all: $(BIN)
 
-$(BIN): main.o MatrixGraph.o
+$(BIN): main.o MatrixGraph.o Astar.o
 	g++ $(CFLAGS) main.o MatrixGraph.o -o $(BIN)
 
 main.o: main.cpp
@@ -11,6 +11,9 @@ main.o: main.cpp
 
 MatrixGraph.o: MatrixGraph.cpp MatrixGraph.h Node.h
 	g++ $(CFLAGS) MatrixGraph.cpp -c
+
+Astar.o: Astar.cpp Astar.h
+	g++ $(CFLAGS) Astar.cpp -c
 
 run: all
 	./$(BIN)
