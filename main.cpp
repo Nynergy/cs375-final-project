@@ -3,9 +3,9 @@
 #include <iostream>
 
 int main() {
-	Node one(1,1, 1);
-       	Node two(3,4, 2);
-	Node three(3,3, 3);
+	Node one(1,1, 0);
+       	Node two(3,4, 1);
+	Node three(3,3, 2);
 
 	one.addEdge(three, 10);
 	two.addEdge(three,1);
