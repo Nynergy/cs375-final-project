@@ -8,6 +8,7 @@ int main() {
 	Node three(3,3, 2);
 
 	one.addEdge(three, 10);
+	one.addEdge(two, 2);
 	two.addEdge(three,1);
 	std::vector<Node> nodes;
 	nodes.push_back(one);
