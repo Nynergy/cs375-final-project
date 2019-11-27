@@ -3,8 +3,8 @@ CFLAGS= -std=c++14 -g
 
 all: $(BIN)
 
-$(BIN): main.o MatrixGraph.o Astar.o
-	g++ $(CFLAGS) main.o MatrixGraph.o Astar.o -o $(BIN)
+$(BIN): main.o MatrixGraph.o Astar.o Dijkstra.o
+	g++ $(CFLAGS) main.o MatrixGraph.o Astar.o Dijkstra.o -o $(BIN)
 
 main.o: main.cpp
 	g++ $(CFLAGS) main.cpp -c
@@ -14,6 +14,9 @@ MatrixGraph.o: MatrixGraph.cpp MatrixGraph.h Node.h
 
 Astar.o: Astar.cpp Astar.h
 	g++ $(CFLAGS) Astar.cpp -c
+
+Dijkstra.o: Dijkstra.cpp Dijkstra.h
+	g++ $(CFLAGS) Dijkstra.cpp -c
 
 run: all
 	./$(BIN)
