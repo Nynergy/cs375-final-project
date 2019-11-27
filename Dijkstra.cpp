@@ -3,6 +3,13 @@
 #include <unordered_map>
 
 // To be used with a matrix graph
+// MatrixGraph implementation will run in O(k*n), where:
+// 	k = # of nodes extracted from the frontier, and
+// 	n = # of nodes in the MatrixGraph
+// Keep in mind that worst case runtime occurs when either:
+// 	The destination node is not connected to the source node, or
+// 	the shortest path between start and dest traverses every node
+// In this case, k = n, so runtime complexity is O(n^2)
 
 double Dijkstra::dijkstra_matrix(Node start, Node dest, MatrixGraph MG) {
 	// <id_1, id_2>
