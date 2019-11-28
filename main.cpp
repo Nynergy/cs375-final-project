@@ -1,11 +1,11 @@
 #include "MatrixGraph.h"
-#include "ListGraph.cpp"
+#include "ListGraph.h"
 #include "Astar.h"
 #include <iostream>
 
 int main() {
 	Node one(1,1, 0);
-       	Node two(3,4, 1);
+    Node two(3,4, 1);
 	Node three(3,3, 2);
 
 	one.addEdge(three, 10);
@@ -18,6 +18,17 @@ int main() {
 	for(int k = 0; k < nodes.size(); k++){
 		std::cout << k << " id " << nodes[k].id << std::endl;
 	}
+	ListGraph gh(5);
+    gh.addEdge(0, 1);
+    gh.addEdge(0, 4);
+    gh.addEdge(1, 2);
+    gh.addEdge(1, 3);
+    gh.addEdge(1, 4);
+    gh.addEdge(2, 3);
+    gh.addEdge(3, 4);
+	
+	gh.printGraph();
+
 	Astar a;
 	double d = a.aStar_matrix(one, three, *mat_graph);
 	std::cout << d << std::endl;

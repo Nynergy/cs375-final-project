@@ -1,17 +1,21 @@
 #include "ListGraph.h"
+#include "ListNode.h"
+#include "AdjList.h"
+#include <iostream>
+
 using namespace std;
 
 ListGraph::ListGraph(int num){
   this->v = num;
-  array = new AdjList[v];
+  list = new AdjList[v];
   for(int i = 0; i < v; i++){
-    array[i].head = NULL;
+    list[i].head = nullptr;
   }
 }
-ListGraph::newNode(int dest){
+ListNode* ListGraph::newNode(int dest){
   ListNode* node = new ListNode;
   node->dest = dest;
-  node->next = NULL;
+  node->next = nullptr;
   return node;
 }
 void ListGraph::addEdge(int u, int v){
@@ -30,7 +34,7 @@ void ListGraph::addEdge(int u, int v){
 // }
 ListGraph::~ListGraph(){}
 void ListGraph::printGraph(){
-  for (i = 0; i < V; ++i)
+  for (int i = 0; i < v; ++i)
   {
       ListNode* pCrawl = list[i].head;
       cout<<"\n Adjacency list of vertex "<<v<<"\n head ";
