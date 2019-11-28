@@ -1,4 +1,5 @@
 #include "MatrixGraph.h"
+#include "ListGraph.cpp"
 
 int main() {
 	Node one, two, three;
