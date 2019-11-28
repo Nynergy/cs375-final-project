@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #include "MatrixGraph.h"
 #include "Astar.h"
 #include <iostream>

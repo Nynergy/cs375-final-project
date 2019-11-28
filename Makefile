@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 BIN= final
 DENSE= dense
 SPARSE= sparse

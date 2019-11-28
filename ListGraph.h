@@ -4,10 +4,10 @@
 #include "ListNode.h"
 
 class ListGraph{
-private:
+public:
   int v; // number of vertices
   struct AdjList* list;
-public:
+
   ListGraph(int);
   ListNode* newNode(int);
   ~ListGraph();
