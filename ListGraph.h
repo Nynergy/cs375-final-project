@@ -1,13 +1,16 @@
 #pragma once
 
-#include <vector>
+#include "AdjList.h"
+#include "ListNode.h"
 
 class ListGraph{
 private:
   int v; // number of vertices
+  struct AdjList* list;
 public:
-  std::vector<int> list;
-  ListGraph(std::vector<int>, int);
+  ListGraph(int);
+  ListNode* newNode(int);
   ~ListGraph();
   void addEdge(int, int);
+  void printGraph();
 };

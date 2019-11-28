@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #include "MatrixGraph.h"
 #include "Astar.h"
 #include <iostream>
@@ -18,6 +19,7 @@ int main() {
 	for(int k = 0; k < nodes.size(); k++){
 		std::cout << k << " id " << nodes[k].id << std::endl;
 	}
+
 	Astar a;
 	double d = a.aStar_matrix(one, three, *mat_graph);
 	std::cout << d << std::endl;
