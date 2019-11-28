@@ -1,33 +1,27 @@
 #include "MatrixGraph.h"
 #include "ListGraph.cpp"
+#include "Astar.h"
+#include <iostream>
 
 int main() {
-	Node one, two, three;
-	one.id = 0;
-	two.id = 1;
-	three.id = 2;
-	std::pair<Node, int> edge_1;
-	std::pair<Node, int> edge_2;
-	std::pair<Node, int> edge_3;
-	edge_1.first = two;
-	edge_1.second = 10;
-	edge_2.first = three;
-	edge_2.second = 5;
-	edge_3.first = one;
-	edge_3.second = 25;
-	std::vector<std::pair<Node, int>> adj_1;
-	adj_1.push_back(edge_1);
-	std::vector<std::pair<Node, int>> adj_2;
-	adj_2.push_back(edge_2);
-	std::vector<std::pair<Node, int>> adj_3;
-	adj_3.push_back(edge_3);
-	one.adj = adj_1;
-	two.adj = adj_2;
-	three.adj = adj_3;
+	Node one(1,1, 0);
+       	Node two(3,4, 1);
+	Node three(3,3, 2);
+
+	one.addEdge(three, 10);
+	two.addEdge(three,1);
 	std::vector<Node> nodes;
 	nodes.push_back(one);
 	nodes.push_back(two);
 	nodes.push_back(three);
-	MatrixGraph mat_graph(nodes);
+	MatrixGraph * mat_graph = new MatrixGraph(nodes);
+	for(int k = 0; k < nodes.size(); k++){
+		std::cout << k << " id " << nodes[k].id << std::endl;
+	}
+	Astar a;
+	double d = a.aStar_matrix(one, three, *mat_graph);
+	std::cout << d << std::endl;
+
+	delete mat_graph;
 	return 0;
 }

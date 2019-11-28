@@ -3,10 +3,16 @@
 #include <utility>
 #include <vector>
 
-// Node struct implementation
-struct Node {
-	int id;
-	std::vector<std::pair<Node, int>> adj;
-		// Each pair represents an adjacent node
-		// and the distance between them
+class Node{
+	public:
+
+		Node(): x(0), y(0), id(-1), adj(std::vector<std::pair<Node,int>>()) { }
+		Node(int xx, int yy, int idd): x(xx), y(yy), id(idd), adj(std::vector<std::pair<Node,int>>()) { }
+		
+		int id;
+		int x;
+		int y;
+		std::vector<std::pair<Node,int>> adj;
+		void addEdge(Node n , int i){ adj.push_back(std::pair<Node,int>(n,i));}
+
 };
