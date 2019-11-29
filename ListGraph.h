@@ -8,7 +8,7 @@ public:
   int v; // number of vertices
   ListNode ** head;
 public:
-  ListGraph(ListEdge[], int&, int&);
+  ListGraph(ListEdge[], int);
   ListNode* newNode(int, int, ListNode*, int, int);
   ~ListGraph();
   //void addEdge(int, int);

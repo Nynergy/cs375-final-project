@@ -5,11 +5,11 @@
 
 using namespace std;
 
-ListGraph::ListGraph(ListEdge edges[], int& edgeNum, int& N){
-  this->v = N;
-  this->head = new ListNode*[N];
+ListGraph::ListGraph(ListEdge edges[], int edgeNum){
+  this->v = edgeNum;
+  this->head = new ListNode*[edgeNum];
   // initialize head pointer for all vertices
-  for(int i = 0; i < N; i++){
+  for(int i = 0; i < edgeNum; i++){
     this->head[i] = nullptr;
   }
   // adding edges
@@ -50,12 +50,8 @@ ListGraph::~ListGraph(){
 }
 //ListGraph::~ListGraph(){}
 void ListGraph::printGraph(ListNode* p, int i){
-  for (int i = 0; i < v; ++i)
-  {
       while (p != nullptr){
-          cout << "(" << i << ", " << p->id<< ", " << p->weight << ") ";
+          cout << "( i: " << i << " | id: " << p->id<< " | weight: " << p->weight << ") " << endl;
           p = p->next;
       }
-      cout<<endl;
-  }
 }
