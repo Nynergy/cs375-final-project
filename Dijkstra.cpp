@@ -36,7 +36,8 @@ double Dijkstra::dijkstra_matrix(Node start, Node dest, MatrixGraph MG) {
 		current = MG.nodes[frontier.get()];
 		
 		// Check if destination has been reached
-		if(current.id == dest.id) { break; }
+
+		//if(current.id == dest.id) { break; }
 
 		// Loop through all nodes and update nodes adjacent to current
 		for(int i = 0; i < MG.num_nodes; i++) {

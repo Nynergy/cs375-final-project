@@ -1,11 +1,12 @@
 #include "MatrixGraph.h"
 #include "Astar.h"
+#include "Dijkstra.h"
 #include <iostream>
 #include <random>
 #include <chrono>
 
-#define NUM_NODES	10
-#define ITERS	10
+#define NUM_NODES	17
+#define ITERS	5
 
 int main() {
 	
@@ -47,6 +48,8 @@ int main() {
 	//Test Algorithms
 	
 	Astar a;
+	std::cout << " ---------------------------------- TEST 1: ASTAR DENSE GRAPH WITH ADJACENCY MATRIX ----------------------------------" << std::endl;
+	std::cout << "Created " << NUM_NODES << " Nodes.\n" <<  "Running Astar with a dense adjacency matrix-based graph " << ITERS << " times..." << std::endl;
 	auto start = std::chrono::high_resolution_clock::now();
 
 	for(int i = 0; i < ITERS; i++){
@@ -61,9 +64,51 @@ int main() {
 	auto stop = std::chrono::high_resolution_clock::now();
 	auto exec_time = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
 
+
 	auto time = exec_time.count()/ ITERS;
 	
-	std::cout << time << std::endl;
+	std::cout << "Completed testing in a time of " << time << " Milliseconds." << std::endl;
+	std::cout << "----------------------------------  END TEST 1 ----------------------------------\n" << std::endl;
+
+	Dijkstra d;
+
+	std::cout << " ---------------------------------- TEST 2: DIJKSTRA DENSE GRAPH WITH ADJACENCY MATRIX ----------------------------------" << std::endl;
+	std::cout << "Created " << NUM_NODES << " Nodes.\n" <<  "Running Dijkstra with a dense adjacency matrix-based graph " << ITERS << " times..." << std::endl;
+	start = std::chrono::high_resolution_clock::now();
+
+	for(int i = 0; i < ITERS; i++){
+		int begin = rand() % NUM_NODES;
+		int end = rand() % NUM_NODES;
+		while(begin == end){
+			end = rand() % NUM_NODES;
+		}
+		d.dijkstra_matrix(MG->nodes[begin], MG->nodes[end] ,*MG);
+	}
+
+	stop = std::chrono::high_resolution_clock::now();
+	exec_time = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
+
+
+	time = exec_time.count()/ ITERS;
+	
+	std::cout << "Completed testing in a time of " << time << " Milliseconds." << std::endl;
+	std::cout << "----------------------------------  END TEST 2 ----------------------------------\n" << std::endl;
+	
+	std::cout << " ---------------------------------- TEST 3: ASTAR DENSE GRAPH WITH ADJACENCY LIST ----------------------------------" << std::endl;
+	std::cout << "Created " << NUM_NODES << " Nodes.\n" <<  "Running Astar with a dense adjacency list-based graph " << ITERS << " times..." << std::endl;
+	
+
+	std::cout << "Completed testing in a time of " << time << " Milliseconds." << std::endl;
+	std::cout << "----------------------------------  END TEST 3 ----------------------------------\n" << std::endl;
+
+
+	std::cout << " ---------------------------------- TEST 4: DIJKSTRA DENSE GRAPH WITH ADJACENCY LIST ----------------------------------" << std::endl;
+	std::cout << "Created " << NUM_NODES << " Nodes.\n" <<  "Running Dijkstra with a dense adjacency list-based graph " << ITERS << " times..." << std::endl;
+	
+	std::cout << "Completed testing in a time of " << time << " Milliseconds." << std::endl;
+	std::cout << "----------------------------------  END TEST 4 ----------------------------------\n" << std::endl;
+
+
 
 	delete MG;
 
