@@ -26,11 +26,12 @@ int main() {
 	std::cout << d << std::endl;
 
 	delete mat_graph;
-
-	ListEdge edges[] = {{0,1,2},{0,2,4},{1,4,3},{2,3,2},{3,1,4},{4,3,3}};
-	int N = sizeof(edges);
-	int n = sizeof(edges)/sizeof(edges[0]);
+	// { src, dest, weight, x, y } 
+	ListEdge edges[] = {{2,1,2, 3, 3},{1,2,3, 1,1},{1,3,3,2,2},{2,3,2,3,4},{3,1,4,1,1},{2,3,3,5,5}};
+	int N = 6;
+	int n = 6;
 	ListGraph adjList(edges, n, N);
+	std::cout << "Here" << std::endl;
 	adjList.printGraph();
 
 	return 0;

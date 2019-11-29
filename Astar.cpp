@@ -55,10 +55,10 @@ double Astar::aStar_list(ListNode * start, ListNode * dest, ListGraph LG){
 	std::unordered_map<int, double> cost_so_far;
 
 	PriorityQueue frontier;
-	frontier.put(0, start.id);
+	frontier.put(0, start->val);
 	
-	came_from[start.id] = start.id;
-	cost_so_far[start.id] = 0;
+	came_from[start->val] = start->val;
+	cost_so_far[start->val] = 0;
 	ListNode * current;
 	ListNode * next;
 	double new_cost;
@@ -66,30 +66,32 @@ double Astar::aStar_list(ListNode * start, ListNode * dest, ListGraph LG){
 
 	while(!frontier.empty()){
 
-		current = LG.nodes[frontier.get()];
+		current = LG.head[frontier.get()];
 
-		if(current.id == dest.id) break;
-
-		for(auto i = 0; i < LG.v; ++i){
-			if(current.id != i){
-				       //	&& LG.matrix[current.id][i] > 0){
-				//Node next = MG.nodes[i];
-				int distance = 0;
-				       //	MG.matrix[current.id][i];
-				new_cost = cost_so_far[current.id] + distance;
+		if(current->val == dest->val) break;
+		ListNode * temp = current->next;
+		while(temp != nullptr){
+			int distance = temp->weight;
+			new_cost = cost_so_far[current->val] + distance;
 				//If the Node is not in the unordered map OR if the new_cost is smaller than its current cost
-				if(cost_so_far.find(i) == cost_so_far.end() || new_cost < cost_so_far[i]){
-					cost_so_far[i] = new_cost;
-					priority = new_cost + distance_heuristic(start, dest);
+			if(cost_so_far.find(temp->val) == cost_so_far.end() || new_cost < cost_so_far[temp->val]){
+				cost_so_far[temp->val] = new_cost;
+				priority = new_cost + distance_heuristic(temp, dest);
 							//MG.nodes[i], dest);
-					frontier.put(priority, i);
-					came_from[i] = current.id;
-				}
+				frontier.put(priority, temp->val);
+				came_from[temp->val] = current->val;
 			}	
 		}
 	}	
-	return cost_so_far[dest.id];
+	return cost_so_far[dest->val];
 
+}
+
+double Astar::distance_heuristic(ListNode * a, ListNode * b){
+	double a_dis = pow( ( (a->x * a->x) + (a->y * a->y) ), .5);
+	double b_dis = pow( ( (b->x * b->x) + (b->y * b->y) ), .5);
+
+	return b_dis - a_dis;
 }
 
 double Astar::distance_heuristic(Node a, Node b){

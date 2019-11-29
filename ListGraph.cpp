@@ -12,19 +12,31 @@ ListGraph::ListGraph(ListEdge edges[], int &n, int &N){
   for(int i = 0; i < this->v; i++){
     this->head[i] = nullptr;
   }
-  for(unsigned i = 0; i < n; i++){
+  for(unsigned i = 0; i < N; i++){
     int s = edges[i].src;
     int d = edges[i].dest;
     int w = edges[i].weight;
-    ListNode* node = newNode(d, w, head[s]); 
-    head[s] = node;
+    ListNode* node = newNode(d, w, head[s]);
+    node->x = edges[i].x;
+    node->y = edges[i].y;
+    if(head[s] == nullptr) { head[s] = node; }
   }
 }
 ListNode* ListGraph::newNode(int value, int weight, ListNode* head){
   ListNode* node = new ListNode;
   node->val = value;
   node->weight = weight;
-  node->next = head;
+  if(head == nullptr) return node;
+
+
+  ListNode* nextN = head->next;
+  if(nextN == nullptr) {head->next = node; return node;}
+  ListNode* prev = nullptr;
+  while(nextN != nullptr){
+	  prev = nextN;
+	  nextN = nextN->next;
+  }
+  prev->next = node;
   return node;
 }
 // void ListGraph::addEdge(int u, int v){
@@ -47,7 +59,7 @@ void ListGraph::printGraph(){
   {
       ListNode* pCrawl = head[i];
       cout<<"\n Adjacency list of vertex "<<i<<"\n head ";
-      while (pCrawl){
+      while (pCrawl != nullptr){
           cout << "(" << i << ", " << pCrawl->val << ", " << pCrawl->weight << ") ";
           pCrawl = pCrawl->next;
       }
