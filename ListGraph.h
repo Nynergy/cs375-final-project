@@ -6,16 +6,11 @@
 class ListGraph{
 public:
   int v; // number of vertices
-<<<<<<< HEAD
   ListNode ** head;
 public:
-=======
-  struct AdjList* list;
-
->>>>>>> dd2d48b9d422377116c795405caadf8a419d7dd0
-  ListGraph(int);
-  ListNode* newNode(int);
+  ListGraph(ListEdge[], int&, int&);
+  ListNode* newNode(int, int, ListNode*);
   ~ListGraph();
-  void addEdge(int, int);
+  //void addEdge(int, int);
   void printGraph();
 };

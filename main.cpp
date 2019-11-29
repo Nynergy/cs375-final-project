@@ -1,4 +1,6 @@
 #include "MatrixGraph.h"
+#include "ListGraph.h"
+#include "ListEdge.h"
 #include "Astar.h"
 #include <iostream>
 
@@ -24,5 +26,12 @@ int main() {
 	std::cout << d << std::endl;
 
 	delete mat_graph;
+
+	ListEdge edges[] = {{0,1,2},{0,2,4},{1,4,3},{2,3,2},{3,1,4},{4,3,3}};
+	int N = sizeof(edges);
+	int n = sizeof(edges)/sizeof(edges[0]);
+	ListGraph adjList(edges, n, N);
+	adjList.printGraph();
+
 	return 0;
 }
