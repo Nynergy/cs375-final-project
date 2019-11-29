@@ -12,5 +12,5 @@ public:
   ListNode* newNode(int, int, ListNode*);
   ~ListGraph();
   //void addEdge(int, int);
-  void printGraph();
+  void printGraph(ListNode*, int);
 };

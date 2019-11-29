@@ -21,18 +21,18 @@ int main() {
 		std::cout << k << " id " << nodes[k].id << std::endl;
 	}
 
-	Astar a;
-	double d = a.aStar_matrix(one, three, *mat_graph);
-	std::cout << d << std::endl;
+	// Astar a;
+	// double d = a.aStar_matrix(one, three, *mat_graph);
+	// std::cout << d << std::endl;
 
-	delete mat_graph;
+	// delete mat_graph;
 	// { src, dest, weight, x, y } 
-	ListEdge edges[] = {{2,1,2, 3, 3},{1,2,3, 1,1},{1,3,3,2,2},{2,3,2,3,4},{3,1,4,1,1},{2,3,3,5,5}};
-	int N = 6;
-	int n = 6;
-	ListGraph adjList(edges, n, N);
-	std::cout << "Here" << std::endl;
-	adjList.printGraph();
-
+	ListEdge edges[] = {{2,1,2},{1,2,3},{1,3,3},{2,3,2},{3,1,4},{2,3,3}};
+	int N = sizeof(edges);
+	int edgeNum = 2;
+	ListGraph adjList(edges, edgeNum, N);
+	for (int i = 0; i < N; i++){
+		adjList.printGraph(adjList.head[i], i);
+	}
 	return 0;
 }
