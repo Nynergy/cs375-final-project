@@ -1,5 +1,4 @@
 #pragma once
-
 #include "Node.h"
 
 // Graph Implemented with Adjacency Matrix
