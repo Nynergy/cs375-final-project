@@ -48,7 +48,7 @@ double Astar::aStar_matrix(Node start, Node dest, MatrixGraph MG){
 
 //List Astar
 double Astar::aStar_list(ListNode * start, ListNode * dest, ListGraph LG){
-	
+	/*
 	//<id1, id2>>
 	std::unordered_map<int, int> came_from;
 	//<id, value>
@@ -83,15 +83,17 @@ double Astar::aStar_list(ListNode * start, ListNode * dest, ListGraph LG){
 			}	
 		}
 	}	
-	return cost_so_far[dest->val];
+	return cost_so_far[dest->val];*/
+		return 0;
 
 }
 
 double Astar::distance_heuristic(ListNode * a, ListNode * b){
-	double a_dis = pow( ( (a->x * a->x) + (a->y * a->y) ), .5);
+	/*double a_dis = pow( ( (a->x * a->x) + (a->y * a->y) ), .5);
 	double b_dis = pow( ( (b->x * b->x) + (b->y * b->y) ), .5);
 
-	return b_dis - a_dis;
+	return b_dis - a_dis;*/
+	return 1;
 }
 
 double Astar::distance_heuristic(Node a, Node b){
