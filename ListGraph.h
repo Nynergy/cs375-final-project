@@ -1,12 +1,12 @@
 #pragma once
 
-#include "AdjList.h"
+#include "ListEdge.h"
 #include "ListNode.h"
 
 class ListGraph{
 private:
   int v; // number of vertices
-  struct AdjList* list;
+  ListNode ** head;
 public:
   ListGraph(int);
   ListNode* newNode(int);

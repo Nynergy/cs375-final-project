@@ -2,6 +2,7 @@
 
 struct ListNode
 {
-    int dest;
+    int val;
+    int weight;
     ListNode* next;
 };

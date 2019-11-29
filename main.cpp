@@ -18,16 +18,8 @@ int main() {
 	for(int k = 0; k < nodes.size(); k++){
 		std::cout << k << " id " << nodes[k].id << std::endl;
 	}
-	ListGraph gh(5);
-    gh.addEdge(0, 1);
-    gh.addEdge(0, 4);
-    gh.addEdge(1, 2);
-    gh.addEdge(1, 3);
-    gh.addEdge(1, 4);
-    gh.addEdge(2, 3);
-    gh.addEdge(3, 4);
 	
-	gh.printGraph();
+	
 
 	Astar a;
 	double d = a.aStar_matrix(one, three, *mat_graph);

@@ -12,7 +12,7 @@ main.o: main.cpp
 MatrixGraph.o: MatrixGraph.cpp MatrixGraph.h Node.h
 	g++ $(CFLAGS) MatrixGraph.cpp -c
 
-ListGraph.o: ListGraph.cpp ListGraph.h ListNode.h AdjList.h
+ListGraph.o: ListGraph.cpp ListGraph.h ListNode.h ListEdge.h
 	g++ $(CFLAGS) ListGraph.cpp -c
 	
 Astar.o: Astar.cpp Astar.h

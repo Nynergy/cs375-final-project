@@ -14,5 +14,5 @@ class Node{
 		int y;
 		std::vector<std::pair<Node,int>> adj;
 		void addEdge(Node n , int i){ adj.push_back(std::pair<Node,int>(n,i));}
-
+		std::vector<std::pair<Node,int>> returnEdges(){return adj;}
 };
