@@ -4,5 +4,5 @@
 
 struct ListEdge
 {
-    int x, y, weight;
+    int src, dest, weight, x, y;
 };

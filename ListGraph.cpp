@@ -14,17 +14,19 @@ ListGraph::ListGraph(ListEdge edges[], int& edgeNum, int& N){
   }
   // adding edges
   for(unsigned i = 0; i < edgeNum; i++){
+    int s = edges[i].src;
+    int d = edges[i].dest;
+    int weight = edges[i].weight;
     int x = edges[i].x;
     int y = edges[i].y;
-    int weight = edges[i].weight;
-    ListNode* node = newNode(y, weight, head[x]);
+    ListNode* node = newNode(d, weight, head[s], x, y);
     // point head pointer to new node
     head[x] = node;
   }
 }
-ListNode* ListGraph::newNode(int value, int w, ListNode* head){
-  ListNode* node = new ListNode;
-  node->val = value;
+ListNode* ListGraph::newNode(int value, int w, ListNode* head, int x, int y){
+  ListNode* node = new ListNode(x, y);
+  node->id = value;
   node->weight = w;
   node->next = head;
   // if(head == nullptr) return node;
@@ -43,7 +45,7 @@ ListNode* ListGraph::newNode(int value, int w, ListNode* head){
 ListGraph::~ListGraph(){
   for (int i = 0; i < v; i++){
     delete[] head[i];
-    delete head;
+    //delete head;
   }
 }
 //ListGraph::~ListGraph(){}
@@ -51,7 +53,7 @@ void ListGraph::printGraph(ListNode* p, int i){
   for (int i = 0; i < v; ++i)
   {
       while (p != nullptr){
-          cout << "(" << i << ", " << p->val<< ", " << p->weight << ") ";
+          cout << "(" << i << ", " << p->id<< ", " << p->weight << ") ";
           p = p->next;
       }
       cout<<endl;
