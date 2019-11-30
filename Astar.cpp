@@ -1,6 +1,7 @@
 #include "Astar.h"
 #include <unordered_map>
 #include <math.h>
+#include <iostream>
 #include "PriorityQueue.h"
 
 //To be used with a matrix
@@ -65,12 +66,19 @@ double Astar::aStar_list(ListNode * start, ListNode * dest, ListGraph LG){
 	double priority;
 
 	while(!frontier.empty()){
+		std::cout << "EXTRACTING FROM FRONTIER..." << std::endl;
 
 		current = LG.head[frontier.get()];
 
 		if(current->id == dest->id) break;
+		/* TODO: Trying to find current->next segfaults */
 		ListNode * temp = current->next;
+		std::cout << "TEMP SET" << std::endl;
+		if(temp == nullptr) {
+			std::cout << "NULLPTR FOUND" << std::endl;
+		}
 		while(temp != nullptr){
+			std::cout << "NEXT NODE..." << std::endl;
 			int distance = temp->weight;
 			new_cost = cost_so_far[current->id] + distance;
 				//If the Node is not in the unordered map OR if the new_cost is smaller than its current cost
