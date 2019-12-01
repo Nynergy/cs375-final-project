@@ -6,7 +6,7 @@
 class ListGraph{
 public:
   int numVertices; // number of vertices
-  ListNode * nodes[];
+  ListNode ** nodes;
   ListGraph(int numVertices, ListNode * v[]);
   ~ListGraph();
   //void addEdge(int, int);
