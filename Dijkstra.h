@@ -8,5 +8,5 @@
 class Dijkstra {
 public:
 	double dijkstra_matrix(Node, Node, MatrixGraph);
-	double dijkstra_list(ListNode*, ListNode*, ListGraph);
+	double dijkstra_list(ListNode*, ListNode*, ListGraph *);
 };

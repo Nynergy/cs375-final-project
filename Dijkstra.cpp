@@ -62,7 +62,7 @@ double Dijkstra::dijkstra_matrix(Node start, Node dest, MatrixGraph MG) {
 
 // To be used with a list graph
 
-double Dijkstra::dijkstra_list(ListNode * start, ListNode * dest, ListGraph LG) {
+double Dijkstra::dijkstra_list(ListNode * start, ListNode * dest, ListGraph * LG) {
 	
 		// <id_1, id_2>
 	std::unordered_map<int, int> came_from;
@@ -87,8 +87,8 @@ double Dijkstra::dijkstra_list(ListNode * start, ListNode * dest, ListGraph LG) 
 	while(!frontier.empty()) {
 		// Extract priority node
 			int index = frontier.get();
-			std::cout << index << std::endl;
-			current = LG.head[index];
+
+			current = LG->nodes[index];
 //			searched[current->id] = 1;
 			// Check if destination has been reached
 
@@ -97,7 +97,7 @@ double Dijkstra::dijkstra_list(ListNode * start, ListNode * dest, ListGraph LG) 
 			if(current != nullptr) nx = current->next;
 			while(nx != nullptr) {
 				//searched[next->id] = 1;
-				distance = nx->weight;
+				distance = nx->nextWeight;
 				new_cost = cost_so_far[current->id] + distance;
 				// If Node not in map OR new_cost < current cost
 				if(cost_so_far.find(nx->id) == cost_so_far.end() || new_cost < cost_so_far[nx->id]) {

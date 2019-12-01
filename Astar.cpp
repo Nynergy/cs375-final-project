@@ -48,7 +48,7 @@ double Astar::aStar_matrix(Node start, Node dest, MatrixGraph MG){
 	}
 
 //List Astar
-double Astar::aStar_list(ListNode * start, ListNode * dest, ListGraph LG){
+double Astar::aStar_list(ListNode * start, ListNode * dest, ListGraph * LG){
 	
 	//<id1, id2>>:
 	std::unordered_map<int, int> came_from;
@@ -66,20 +66,14 @@ double Astar::aStar_list(ListNode * start, ListNode * dest, ListGraph LG){
 	double priority;
 
 	while(!frontier.empty()){
-		std::cout << "EXTRACTING FROM FRONTIER..." << std::endl;
 
-		current = LG.head[frontier.get()];
+		current = LG->nodes[frontier.get()];
 
 		if(current->id == dest->id) break;
-		/* TODO: Trying to find current->next segfaults */
+
 		ListNode * temp = current->next;
-		std::cout << "TEMP SET" << std::endl;
-		if(temp == nullptr) {
-			std::cout << "NULLPTR FOUND" << std::endl;
-		}
 		while(temp != nullptr){
-			std::cout << "NEXT NODE..." << std::endl;
-			int distance = temp->weight;
+			int distance = temp->nextWeight;
 			new_cost = cost_so_far[current->id] + distance;
 				//If the Node is not in the unordered map OR if the new_cost is smaller than its current cost
 			if(cost_so_far.find(temp->id) == cost_so_far.end() || new_cost < cost_so_far[temp->id]){
@@ -88,7 +82,9 @@ double Astar::aStar_list(ListNode * start, ListNode * dest, ListGraph LG){
 							//MG.nodes[i], dest);
 				frontier.put(priority, temp->id);
 				came_from[temp->id] = current->id;
-			}	
+			}
+
+		temp = temp->next;
 		}
 	}	
 	return cost_so_far[dest->id];

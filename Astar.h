@@ -9,9 +9,8 @@ class Astar{
 
 	public:
 		double aStar_matrix(Node,Node,MatrixGraph);
-		double aStar_list(Node,Node, ListGraph);
 		double distance_heuristic(Node, Node);
-		double aStar_list(ListNode *, ListNode *, ListGraph);
+		double aStar_list(ListNode *, ListNode *, ListGraph*);
 		
 		//Euclidean
 		double distance_heuristic(ListNode *, ListNode*);

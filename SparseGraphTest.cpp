@@ -95,15 +95,66 @@ int main() {
 	std::cout << "Completed testing in a time of " << time << " Milliseconds." << std::endl;
 	std::cout << "----------------------------------  END TEST 6 ----------------------------------\n" << std::endl;
 
-	std::cout << " ---------------------------------- TEST 7: ASTAR SPARSE GRAPH WITH ADJACENCY LIST ----------------------------------" << std::endl;
-	std::cout << "Created " << NUM_NODES << " Nodes.\n" <<  "Running Astar with a sparse adjacency list-based graph " << ITERS << " times..." << std::endl;
+	ListNode * arr[NUM_NODES];
+
+	for(int i = 0; i < NUM_NODES; i++){
+		int x = rand() % 100;
+		int y = rand() % 100;
+		arr[i] = new ListNode(i,x,y);
+	}
+
+	for(int i = 0; i < NUM_NODES; i++){
+		ListNode * n = arr[i];
+		for(int j = 0; j < NUM_NODES; j++){
+			if(i != j){
+				n->next = new ListNode(arr[j]->id, arr[j]->x, arr[j]->y);
+				n->nextWeight = rand() % 100;
+				n = n->next;
+			}
+		}
+	}
+	ListGraph * LG = new ListGraph(NUM_NODES, arr);
+
 	
-			std::cout << "Completed testing in a time of " << time << " Milliseconds." << std::endl;
+
+	std::cout << " ---------------------------------- TEST 7: ASTAR SPARSE GRAPH WITH ADJACENCY LIST ----------------------------------" << std::endl;
+	std::cout << "Created " << NUM_NODES << " Nodes.\n" <<  "Running Astar with a sparse adjacency list-based graph " << (ITERS * 10) << " times..." << std::endl;
+	
+	start = std::chrono::high_resolution_clock::now();
+	for(int i = 0; i < (ITERS * 10); i++){
+		int start = rand() % NUM_NODES;
+		int end = rand() % NUM_NODES;
+		a.aStar_list(LG->nodes[start], LG->nodes[end], LG);
+	}
+	
+	stop = std::chrono::high_resolution_clock::now();
+	exec_time = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
+
+
+	time = exec_time.count()/ ITERS;
+
+
+
+	std::cout << "Completed testing in a time of " << time << " Milliseconds." << std::endl;
 	std::cout << "----------------------------------  END TEST 7 ----------------------------------\n" << std::endl;
 
 	std::cout << " ---------------------------------- TEST 8: DIJKSTRA SPARSE GRAPH WITH ADJACENCY LIST ----------------------------------" << std::endl;
-	std::cout << "Created " << NUM_NODES << " Nodes.\n" <<  "Running Dijkstra with a sparse adjacency list-based graph " << ITERS << " times..." << std::endl;
+	std::cout << "Created " << NUM_NODES << " Nodes.\n" <<  "Running Dijkstra with a sparse adjacency list-based graph " << (ITERS *10) << " times..." << std::endl;
+
 	
+	start = std::chrono::high_resolution_clock::now();
+	for(int i = 0; i<( ITERS * 10); i++){
+		int start = rand() % NUM_NODES;
+		int end = rand() % NUM_NODES;
+		d.dijkstra_list(LG->nodes[start], LG->nodes[end], LG);
+	}
+	stop = std::chrono::high_resolution_clock::now();
+	exec_time = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
+
+
+	time = exec_time.count()/ ITERS;
+
+
 	
 	std::cout << "Completed testing in a time of " << time << " Milliseconds." << std::endl;
 	std::cout << "----------------------------------  END TEST 8 ----------------------------------\n" << std::endl;

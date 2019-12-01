@@ -6,7 +6,7 @@
 #include <random>
 #include <chrono>
 
-#define NUM_NODES	10
+#define NUM_NODES	13
 #define ITERS	5
 
 int main() {
@@ -131,8 +131,11 @@ int main() {
 	std::cout << "Created " << NUM_NODES << " Nodes.\n" <<  "Running Astar with a dense adjacency list-based graph " << ITERS << " times..." << std::endl;
 
 	start = std::chrono::high_resolution_clock::now();
-
-	//a.aStar_list(node1, node2, *LG);
+	for(int i = 0; i < ITERS; i++){
+		int start = rand() % NUM_NODES;
+		int end = rand() % NUM_NODES;
+		a.aStar_list(LG->nodes[start], LG->nodes[end], LG);
+	}
 	
 	stop = std::chrono::high_resolution_clock::now();
 	exec_time = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
@@ -150,9 +153,11 @@ int main() {
 
 	
 	start = std::chrono::high_resolution_clock::now();
-
-	//d.dijkstra_list(LG->head[0], LG->head[1], *LG);
-
+	for(int i = 0; i<ITERS; i++){
+		int start = rand() % NUM_NODES;
+		int end = rand() % NUM_NODES;
+		d.dijkstra_list(LG->nodes[start], LG->nodes[end], LG);
+	}
 	stop = std::chrono::high_resolution_clock::now();
 	exec_time = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
 
