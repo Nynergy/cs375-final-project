@@ -3,11 +3,9 @@
 class ListNode{
 public:
     int id;
-    int weight;
-    int x, y;
-    ListNode* next;
-    ListNode(int x, int y){
-        this->x = x;
-        this->y = y;
-    }
+    int x;
+    int y;
+    int nextWeight;
+    ListNode * next;
+    ListNode(int idIN, int xIN, int yIN): id(idIN), x(xIN), y(yIN), nextWeight(0), next(nullptr) { }
 };
